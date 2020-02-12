@@ -5,6 +5,11 @@ If doubling the digit results in a number greater than 9, subtract 9 from the pr
 Find the sum all of the digits
 If the sum is evenly divisible by 10, then the sequence / card number is valid.
 
+Wiki:
+https://en.wikipedia.org/wiki/Luhn_algorithm
+
+Walkthrough:
+https://medium.com/cyberdoggo/luhn-algorithm-in-javascript-python-clojure-part-1-c4ea3079d0f7
 
 Ex:
 
