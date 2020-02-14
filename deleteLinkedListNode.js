@@ -1,3 +1,10 @@
+/**
+ * Delete a node from a singly-linked list, ↴ given only a variable pointing to that node.
+
+  The input could, for example, be the variable b below:
+ */
+
+
 class LinkedListNode {
   constructor(value) {
     this.value = value;
