@@ -17,6 +17,22 @@ function deleteNode(nodeToDelete) {
   // Delete the input node from the linked list
   console.log('hello')
 
+  // Get the input node's next node, the one we want to skip to
+
+  const nextNode = nodeToDelete.next;
+
+  if (nextNode) {
+    // replace the input node's value and pointer (nodeToDelete_ with the next node's value and pointer (nextNode). The previous node NOW effectively skips over the input node. Basically, you're overwriting the input node's value and pointer (making it disappear with the help of garbage collection)
+
+    nodeToDelete.value = nextNode.value
+    nodeToDelete.next = nextNode.next
+
+  } else {
+    // throw an error if we're trying to delete the LAST node!
+
+    throw new Error("Can't delete the last node with this technique! (There's no 'next' for the lade node)")
+
+  }
 }
 
 
