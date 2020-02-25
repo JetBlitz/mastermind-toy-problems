@@ -15,6 +15,30 @@ function shuffle(array) {
 
   // Shuffle the input in place
 
+  //if it's 1 or 0 items, just return
+  if (array.length <=1) return;
+
+  // go through the entire array
+  // initialize
+
+  for (let indexWeAreChoosingFor = 0; indexWeAreChoosingFor < array.length - 1; indexWeAreChoosingFor++) {
+
+    // choose a random not-yet-placed item to place there
+    // (could also be the item currently in that spot)
+    // must be an item AFTER the current item, because the stuff
+    // before has all already been placed
+
+    const randomChoiceIndex = getRandom(indexWeAreChoosingFor, array.length -1);
+
+    // place our random choice in the spot by swapping
+
+    if (randomChoiceIndex !== indexWeAreChoosingFor) {
+      const valueAtIndexWeChoseFor = array[indexWeAreChoosingFor];
+      array[indexWeAreChoosingFor] = array[randomChoiceIndex];
+      array[randomChoiceIndex] = valueAtIndexWeChoseFor;
+    }
+
+  }
 
 }
 

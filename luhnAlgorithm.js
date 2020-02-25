@@ -22,7 +22,7 @@ const isValid = card => {
   const arr = []
   for (let i = 0; i < card.length; i++) {
     // do stuff to the digits and add them to arr
-    // check if evenl
+    // check if even
     if (i % 2 == 0) {
       // double digit accordig to formula and add to arr
       if (card[i] * 2 < 10) {
@@ -58,6 +58,6 @@ const isValid = card => {
 
 // // console.log(isValid("4539148803436467")) // true
 
-console.log(isValid("4539148803436467")) // true
+// console.log(isValid("4539148803436467")) // true
 
 console.log(isValid("8273123273520569")) // false
