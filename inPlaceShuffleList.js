@@ -5,6 +5,7 @@ The shuffle must be "uniform," meaning each item in the original list must have 
 
 Assume that you have a function get_random(floor, ceiling) for getting a random integer that is >= floor and <= ceiling.
 
+https://www.interviewcake.com/question/javascript/shuffle?utm_source=weekly_email&utm_source=drip&utm_campaign=weekly_email&utm_campaign=Interview%20Cake%20Weekly%20Problem%20%23282:%20In-Place%20Shuffle&utm_medium=email&utm_medium=email&__s=giuhjzgbutpsdftrvrbx
 */
 
 function getRandom(floor, ceiling) {
