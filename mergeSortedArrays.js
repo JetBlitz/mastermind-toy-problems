@@ -9,7 +9,7 @@ function mergeArrays(myArray, alicesArray) {
     // check the largest digit in the array (this is my max)
 
     // check to see if result array has the number
-      // if not, push it into resultArr
+    // if not, push it into resultArr
     if (resultArr[i] !== myArray[i]) {
       resultArr.push(myArray[i])
     }
@@ -21,12 +21,12 @@ function mergeArrays(myArray, alicesArray) {
       resultArr.push(alicesArray[i])
       // check the largest digit in the array (this is my max)
       // check to see if result array has the number
-        // if not, push it into resultArr
+      // if not, push it into resultArr
     }
 
   }
 
-      resultArr.sort((a, b) => a - b);
+  resultArr.sort((a, b) => a - b);
 
 
   return resultArr;
