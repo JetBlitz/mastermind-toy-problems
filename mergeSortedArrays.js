@@ -99,24 +99,24 @@ Okay, good start! That works for finding the 0th element. Now how do we choose t
 
 Let's look at a sample input:
 
-  [3,  4,  6, 10, 11, 15]  // myArray
+[3,  4,  6, 10, 11, 15]  // myArray
 [1,  5,  8, 12, 14, 19]  // alicesArray
 
-To start we took the 0th element from alicesArray and put it in the 0th slot in the output array:
+//! To start we took the 0th element from alicesArray and put it in the 0th slot in the output array:
 
-  [3,  4,  6, 10, 11, 15]  // myArray
+[3,  4,  6, 10, 11, 15]  // myArray
 [1,  5,  8, 12, 14, 19]  // alicesArray
 [1,  x,  x,  x,  x,  x]  // mergedArray
 
-We need to make sure we don't try to put that 1 in mergedArray again. We should mark it as "already merged" somehow. For now, we can just cross it out:
+//! We need to make sure we don't try to put that 1 in mergedArray again. We should mark it as "already merged" somehow. For now, we can just cross it out:
 
-  [3,  4,  6, 10, 11, 15]  // myArray
+[3,  4,  6, 10, 11, 15]  // myArray
 [x,  5,  8, 12, 14, 19]  // alicesArray
 [1,  x,  x,  x,  x,  x]  // mergedArray
 
-Or we could even imagine it's removed from the array:
+//! Or we could even imagine it's removed from the array:
 
-  [3,  4,  6, 10, 11, 15]  // myArray
+[3,  4,  6, 10, 11, 15]  // myArray
 [5,  8, 12, 14, 19]      // alicesArray
 [1,  x,  x,  x,  x,  x]  // mergedArray
 
@@ -124,10 +124,11 @@ Now to get our next element we can use the same approach we used to get the 0th 
 
 So in general we could say something like:
 
-We'll start at the beginnings of our input arrays, since the smallest elements will be there.
-As we put items in our final mergedArray, we'll keep track of the fact that they're "already merged."
-At each step, each array has a first "not-yet-merged" item.
-At each step, the next item to put in the mergedArray is the smaller of those two "not-yet-merged" items!
+  1. We'll start at the beginnings of our input arrays, since the smallest elements will be there.
+  2. As we put items in our final mergedArray, we'll keep track of the fact that they're "already merged."
+  3. At each step, each array has a first "not-yet-merged" item.
+  4. At each step, the next item to put in the mergedArray is the smaller of those two "not-yet-merged" items!
+
 Can you implement this in code?
 
   function mergeArrays(myArray, alicesArray) {
@@ -161,7 +162,7 @@ Can you implement this in code?
 
 Okay, this algorithm makes sense. To wrap up, we should think about edge cases and check for bugs. What edge cases should we worry about?
 
-Here are some edge cases:
+//! Here are some edge cases:
 
 One or both of our input arrays is 0 elements or 1 element
 One of our input arrays is longer than the other.
@@ -217,17 +218,17 @@ Be sure you check the cases in the right order!
   return mergedArray;
 }
 
-Cool. This'll work, but it's a bit repetitive. We have these two lines twice:
+//? Cool. This'll work, but it's a bit repetitive. We have these two lines twice:
 
   mergedArray[currentIndexMerged] = myArray[currentIndexMine];
 currentIndexMine++;
 
-Same for these two lines:
+//? Same for these two lines:
 
   mergedArray[currentIndexMerged] = alicesArray[currentIndexAlices];
 currentIndexAlices++;
 
-That's not DRY. ↴ Maybe we can avoid repeating ourselves by bringing our code back down to just 2 cases.
+That's not DRY (Don't Repeat Yourself). ↴ Maybe we can avoid repeating ourselves by bringing our code back down to just 2 cases.
 
 See if you can do this in just one "if else" by combining the conditionals.
 
@@ -245,15 +246,17 @@ myArray[currentIndexMine] will be undefined. But our code will still work! JavaS
 
 Even though our code works, it's messy to access and compare an element that doesn't exist. Let's adjust our code so we're more explicit and don't rely on JavaScript's uncommon and nonobvious behavior of giving false in comparisons with undefined.
 
-Solution
+//! Solution
 First, we allocate our answer array, getting its size by adding the size of myArray and alicesArray.
 
 We keep track of a current index in myArray, a current index in alicesArray, and a current index in mergedArray. So at each step, there's a "current item" in alicesArray and in myArray. The smaller of those is the next one we add to the mergedArray!
 
-But careful: we also need to account for the case where we exhaust one of our arrays and there are still elements in the other. To handle this, we say that the current item in myArray is the next item to add to mergedArray only if myArray is not exhausted AND, either:
+//? But careful: we also need to account for the case where we exhaust one of our arrays and there are still elements in the other. To handle this, we say that the current item in myArray is the next item to add to mergedArray only if myArray is not exhausted AND, either:
 
-alicesArray is exhausted, or
-the current item in myArray is less than the current item in alicesArray
+  1. alicesArray is exhausted, or
+  2. the current item in myArray is less than the current item in alicesArray
+
+
   function mergeArrays(myArray, alicesArray) {
 
   // Set up our mergedArray
@@ -273,6 +276,8 @@ the current item in myArray is less than the current item in alicesArray
     // 1) Alice's array IS exhausted, or
     // 2) The current element in my array is less
     //    than the current element in Alice's array
+
+
     if (!isMyArrayExhausted && (isAlicesArrayExhausted ||
       (myArray[currentIndexMine] < alicesArray[currentIndexAlices]))) {
 
@@ -293,7 +298,7 @@ the current item in myArray is less than the current item in alicesArray
 
 The if statement is carefully constructed to avoid indexing past the end of an array, because JavaScript would give us undefined and we don't want to compare undefined with an integer. We take advantage of JavaScript's short circuit evaluation ↴ and check first if the arrays are exhausted.
 
-Complexity
+//! Complexity
 O(n)O(n) time and O(n)O(n) additional space, where nn is the number of items in the merged array.
 
 The added space comes from allocating the mergedArray. There's no way to do this " in place" ↴ because neither of our input arrays are necessarily big enough to hold the merged array.
@@ -302,7 +307,7 @@ But if our inputs were linked lists, we could avoid allocating a new structure a
 
 In our implementation above, we could avoid tracking currentIndexMerged and just compute it on the fly by adding currentIndexMine and currentIndexAlices. This would only save us one integer of space though, which is hardly anything. It's probably not worth the added code complexity.
 
-Bonus
+//! Bonus
 What if we wanted to merge several sorted arrays? Write a function that takes as an input an array of sorted arrays and outputs a single sorted array with all the items from each array.
 
 Do we absolutely have to allocate a new array to use for the merged output? Where else could we store our merged array? How would our function need to change?
