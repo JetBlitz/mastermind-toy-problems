@@ -1,9 +1,36 @@
 function mergeArrays(myArray, alicesArray) {
 
+  const resultArr = [];
+
   // Combine the sorted arrays into one large sorted array
 
+  // traverse through myArray
+  for (var i = 0; i < myArray.length; i++) {
+    // check the largest digit in the array (this is my max)
 
-  return [];
+    // check to see if result array has the number
+      // if not, push it into resultArr
+    if (resultArr[i] !== myArray[i]) {
+      resultArr.push(myArray[i])
+    }
+  }
+
+  // tarverse through alicesArray
+  for (var i = 0; i < alicesArray.length; i++) {
+    if (resultArr[i] !== alicesArray[i]) {
+      resultArr.push(alicesArray[i])
+      // check the largest digit in the array (this is my max)
+      // check to see if result array has the number
+        // if not, push it into resultArr
+    }
+
+  }
+
+      resultArr.sort((a, b) => a - b);
+
+
+  return resultArr;
+  // return [];
 }
 
 
