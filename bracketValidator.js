@@ -15,10 +15,10 @@ Examples:
   "{ [ ( ] ) }" should return False
   "{ [ }" should return False
  *
-O:
-I:
-C:
-E:
+O: boolean; true or false
+I: braces, brackets, paranetheses
+C: none
+E: should it take into account the code in between
 
  */
 
