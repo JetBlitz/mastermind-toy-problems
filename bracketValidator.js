@@ -27,11 +27,30 @@ function isValid(code) {
   //TODO
   // Determine if the input code is valid
 
+  const openers = ['(', '{', '['];
+  // array of openers
+
+  const closers = [')', '}', ']'];
+  // array of closers
+
+  if (code) {
+    // check if argument (code) matches nany of the openers
+      // initialize argument
+      // select index 0
+        // check if in openers
+
+      // select last index
+        // check if in closers
+
+      // if both are true, select true
+  }
+
+
 
   return false;
 }
 
-
+console.log(isValid("{ [ ] ( ) }")) // should return True
 
 
 
