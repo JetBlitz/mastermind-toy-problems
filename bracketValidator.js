@@ -35,14 +35,14 @@ function isValid(code) {
 
   if (code) {
     // check if argument (code) matches nany of the openers
-      // initialize argument
-      // select index 0
-        // check if in openers
+    // initialize argument
+    // select index 0
+    // check if in openers
 
-      // select last index
-        // check if in closers
+    // select last index
+    // check if in closers
 
-      // if both are true, select true
+    // if both are true, select true
   }
 
 
