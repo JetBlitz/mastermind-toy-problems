@@ -98,7 +98,8 @@ class LinkedListNode {
 
 A cycle occurs when a node’s next points back to a previous node in the list.The linked list is no longer linear with a beginning and end—instead, it cycles through a loop of nodes.
 
-Write a function containsCycle() that takes the first node in a singly - linked list and returns a boolean indicating whether the list contains a cycle.
+
+//TODO Write a function containsCycle() that takes the first node in a singly - linked list and returns a boolean indicating whether the list contains a cycle.
 
 Link: https://www.interviewcake.com/question/javascript/linked-list-cycles?utm_source=weekly_email&utm_source=drip&utm_campaign=weekly_email&utm_campaign=Interview%20Cake%20Weekly%20Problem%20%23291:%20Largest%20Stack&utm_medium=email&utm_medium=email&__s=s08ck7tg01uzcnt0mz7q
 
@@ -106,6 +107,75 @@ Link: https://www.interviewcake.com/question/javascript/linked-list-cycles?utm_s
 Breakdown
 Because a cycle could result from the last node linking to the first node, we might need to look at every node before we even see the start of our cycle again. So it seems like we can’t do better than O(n)O(n) runtime.
 
-How can we track the nodes we’ve already seen?
+//! How can we track the nodes we’ve already seen?
+
+By using a set, we could store all the nodes we've seen so far. The algorithm is simple:
+
+  1.
+    // If the current node is already in our set, we have a cycle.
+      // Return true
+  2.
+    // If the current node is null we've hit the end of the list.
+      // Return false
+  3.
+    // Else throw the current node in our set and keep going.
+
+    //?
+    O: boolean whether the list contains a cycle
+    I: First node in a singly linked list
+    C: uses only the first node
+      // it is a singly linked list
+    E: Time and space costs of this approach
+      // the best runtime is O(n)
+      // the best space cost is also O(n)
+
+      ////////
+
+  Solution
+    We keep two pointers to nodes (we'll call these “runners”both starting at the first node. Every time slowRunner movone node ahead, fastRunner moves two nodes ahead.
+
+    If the linked list has a cycle, fastRunner will "lap" (catup with) slowRunner, and they will momentarily equal each other.
+
+    If the list does not have a cycle, fastRunner will reach tend.
+
+
 */
 
+class LinkedListNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+
+/**  //! FIRST Attempt
+function containsCycle() {
+  // if current nodes is already in our set, we have a cycle.
+  if (currentNode === true) {
+    // return true
+    return true;
+
+  }
+
+
+  // if the current node is null, we've hit the end of the list.
+  if (currentNode === null) {
+    // return false
+  } else {
+
+    // else throw the current node in our set and keep going.
+  }
+
+
+
+}
+
+*/
+
+//! SECOND Attempt
+
+function containsCycle(firstNode) {
+
+
+}
