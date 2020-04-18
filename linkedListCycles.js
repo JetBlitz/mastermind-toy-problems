@@ -101,5 +101,11 @@ A cycle occurs when a node’s next points back to a previous node in the list.T
 Write a function containsCycle() that takes the first node in a singly - linked list and returns a boolean indicating whether the list contains a cycle.
 
 Link: https://www.interviewcake.com/question/javascript/linked-list-cycles?utm_source=weekly_email&utm_source=drip&utm_campaign=weekly_email&utm_campaign=Interview%20Cake%20Weekly%20Problem%20%23291:%20Largest%20Stack&utm_medium=email&utm_medium=email&__s=s08ck7tg01uzcnt0mz7q
+
+
+Breakdown
+Because a cycle could result from the last node linking to the first node, we might need to look at every node before we even see the start of our cycle again. So it seems like we can’t do better than O(n)O(n) runtime.
+
+How can we track the nodes we’ve already seen?
 */
 
