@@ -148,6 +148,28 @@ class LinkedListNode {
   }
 }
 
+//! Create a singly linked list first: This is the cycle that needs to be tested.
+
+var nodeA = new LinkedListNode('A');
+//?
+// console.log(nodeA); // LinkedListNode { value: 'A', next: null }
+
+var nodeB = nodeA.next = new LinkedListNode('B');
+//?
+// console.log(nodeB) // LinkedListNode { value: 'B', next: null }
+
+// Now verify if nodeA's this.net is still null or if it was changed. (It's been changed from null to LinkedListNode { value: 'B', next: null })
+//?
+// console.log(nodeA)
+// LinkedListNode {
+//   value: 'A',
+//   next: LinkedListNode { value: 'B', next: null }
+// }
+
+var nodeC = nodeB.next = new LinkedListNode('C');
+var nodeD = nodeC.next = new LinkedListNode('D');
+var nodeE = nodeD.next = new LinkedListNode('E');
+
 
 /**  //! FIRST Attempt
 function containsCycle() {
@@ -177,5 +199,34 @@ function containsCycle() {
 
 function containsCycle(firstNode) {
 
+  // start both runners at the beginning
+  let slowRunner = firstNode;
+  let fastRunner = firstNode;
 
+  // until we hit the end of the list
+
+  while (fastRunner && fastRunner.next) {
+    slowRunner = slowRunner.next;
+    fastRunner = fastRunner.next.next;
+
+    // Case: fastRunner is abotu to "lap" slowRunner
+    if (fastRunner === slowRunner) {
+      return true;
+    }
+  }
+
+  // Case: fastRunner hit the end of the list
+  return false;
 }
+
+// Test the function:
+
+// console.log(nodeA) // returns ALL the linkedLists starting from 'A'
+
+
+console.log(containsCycle(nodeA)) // false
+
+// change nodeE.next by assigning it nodeB
+nodeE.next = nodeB;
+
+console.log(containsCycle(nodeA)) // true
