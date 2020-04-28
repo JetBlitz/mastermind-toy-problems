@@ -1,5 +1,9 @@
 // Implement the push, pop, and getMax methods
 
+//Use your Stack class to implement a new class MaxStack with a method getMax() that returns the largest element in the stack. getMax() should not remove the item.
+
+//Your stacks will contain only integers.
+
 class MaxStack {
   constructor() {
 
